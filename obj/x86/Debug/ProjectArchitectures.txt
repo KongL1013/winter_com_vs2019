@@ -1,0 +1,2 @@
+C:\Users\lushujie\Source\Repos\Dji_Mavic_uwp\DJIVideoParser\DJIVideoParser.vcxproj;x86
+C:\Users\lushujie\Source\Repos\Dji_Mavic_uwp\DJIWSDKFPVDemo\DJIWSDKFPVDemo.csproj;x86

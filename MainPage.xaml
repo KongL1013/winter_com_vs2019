@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="DJIWSDKDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DJIWSDKDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Width="1500" Height="1000" ManipulationMode="System">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="SDKRegisButton"  Margin="3,2,0,154" Background="#CCF33434" Height="44" Width="372" Content="SDKRegistration FAILED" HorizontalAlignment="Stretch" Canvas.ZIndex="10" Click="SDKRegisButton_Click" VerticalAlignment="Stretch"/>
+            <Button x:Name="ConnectSocketButton" Margin="3,48,0,108"  Background="#CCF33434" Height="44" Width="372" Content="Socket Connect Failed" Click="ConnectSocketButton_Click" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            <Button x:Name="StartTakeoffButton" Margin="3,97,0,59"   Height="44" Width="170" Content="Start TakeOff"  VerticalAlignment="Stretch" Click="StartTakeoffButton_Click"/>
+            <Button x:Name="StopTakeOffButton"  Height="44" Width="170" Content="Stop TakeOff"  Margin="0,97,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="StopTakeOffButton_Click" />
+            <Button x:Name="StopAutolandButton" Margin="0,146,0,0"   Height="44" Width="170" Content="Stop Autoland"  HorizontalAlignment="Right" VerticalAlignment="Top" Click="StopAutolandButton_Click"/>
+            <Button x:Name="StartAutolandButton" Margin="3,146,0,0"   Height="44" Width="170" Content="Start Autoland"  VerticalAlignment="Top" Click="StartAutolandButton_Click"/>
+            <StackPanel Grid.Column="1" Margin="10,0,609,0">
+                <TextBlock x:Name="activeStatusText" Text="Active failed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <TextBlock x:Name="sendMsgCount">Piture Status NO DATA!!!!</TextBlock>
+                <TextBlock x:Name="dipFlightVelocityMsg">Velocity NO DATA!!!!</TextBlock>
+                <TextBlock x:Name="dipFlightLocation2DMsg">Location NO DATA!!!!</TextBlock>
+                <TextBlock x:Name="dipFlightAltitudeMsg">Altitude NO DATA!!!!</TextBlock>
+                <TextBlock x:Name="dipFlightAttitudeMsg">Attitude NO DATA!!!!</TextBlock>
+
+                <TextBlock x:Name="dipFrontObstacle">Nose NO DATA!!!!</TextBlock>
+                <TextBlock x:Name="dipBackObstacle">Tail NO DATA!!!!</TextBlock>
+                <TextBlock x:Name="dipReceiveMsg" TextWrapping = "Wrap" >Receved msg：null</TextBlock>
+
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="524,2,0,0">
+                <TextBlock x:Name="dipBatteryMsg">Battery NO DATA!!!!</TextBlock>
+                <TextBlock x:Name="dipWiFiMsg">Wifi connect status: NOT CONNECTED</TextBlock>
+                <TextBlock x:Name="dipYoloResult">YoloResultForAlignment</TextBlock>
+                <TextBox x:Name="dipYoloDetectionResult" Header="YoloDetectionResult" AcceptsReturn="True" TextWrapping="Wrap" Height="141" IsReadOnly="True"/>
+
+            </StackPanel>
+
+        </Grid>
+        <Button x:Name="FlyTrajectoryButton" Content="Fly Trajectory"  Click="FlyTrajectoryButton_Click" Height="44" Width="170" Margin="3,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button x:Name="ReceiveMsgButton" Content="Receive Msg"  Click="ReceiveMsg_Click" Height="44" Width="170" Margin="205,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button x:Name="CameraFocusButton" Content="Camera Fucus" Height="44" Width="170" Margin="205,62,0,0" Grid.Row="1" VerticalAlignment="Top" Click="CameraFocusButton_Click"/>
+        <Button x:Name="HoverButton" Content="Hover" Margin="3,62,0,0" Click="HoverButton_Click" Height="44" Width="170" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button x:Name="FlyDownButton" Content="FlyDown" Margin="3,112,0,0" Click="FlyDownButton_Click" Height="44" Width="170" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button x:Name="TakeOffAndFlyTrajButton" Content="TakeOffAndFlyTraj" Margin="3,172,0,0" Click="TakeOffAndFlyTrajButton_Click" Height="44" Width="170" Grid.Row="1" VerticalAlignment="Top"/>
+
+
+
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <SwapChainPanel x:Name="DispVideo"   Width="640" Height="360" Margin="10,10,10,10" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox x:Name="debugMsg"  AcceptsReturn="True" TextWrapping="Wrap" Header="Debug Msg" Height="350" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="600" />
+        </StackPanel>
+        <TextBlock x:Name="flightStatus" HorizontalAlignment="Left" Margin="385,10,0,0" Grid.Row="1" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="373" />
+        <Button x:Name="FlyButtonUP" Content="UP" Margin="961,91,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Height="32" Click="FlyButtonUP_Click"/>
+        <Button x:Name="FlyButtonLeft" Content="Left" Margin="894,128,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Height="32" Click="FlyButtonLeft_Click"/>
+        <Button x:Name="FlyButtonDown" Content="Down" Margin="961,128,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Height="32" Click="FlyButtonDown_Click"/>
+        <Button x:Name="FlyButtonRight" Content="Right" Margin="1028,128,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Height="32" Click="FlyButtonRight_Click"/>
+        <Button x:Name="FlyButtonYawL" Content="Yaw L" Margin="894,91,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Height="32" Click="FlyButtonYawL_Click"/>
+        <Button x:Name="FlyButtonYawR" Content="Yaw R" Margin="1028,91,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Height="32" Click="FlyButtonYawR_Click"/>
+        <Button x:Name="FlyButtonForward" Content="Forward" Margin="894,52,0,0" Grid.Row="1" VerticalAlignment="Top" Width="98" Height="32" Click="FlyButtonForward_Click"/>
+        <Button x:Name="FlyButtonBack" Content="Back" Margin="997,52,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93" Height="32" Click="FlyButtonBack_Click"/>
+
+    </Grid>
+</Page>
